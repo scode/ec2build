@@ -99,6 +99,8 @@ rm:2345:wait:/etc/rc.multi
 rh:06:wait:/etc/rc.shutdown
 su:S:wait:/sbin/sulogin -p
 ca::ctrlaltdel:/sbin/shutdown -t3 -r now
+# This will enable the system log.
+c0:12345:respawn:/sbin/agetty 38400 hvc0 linux
 EOF
 
 mv $ROOT/etc/hosts.deny $ROOT/etc/hosts.deny.pacorig
@@ -116,7 +118,7 @@ timeout 1
 
 title  Arch Linux
 	root   (hd0,0)
-	kernel /vmlinuz26-ec2 root=/dev/xvda2 ip=dhcp spinlock=tickless ro
+	kernel /vmlinuz26-ec2 root=/dev/xvda2 console=hvc0 ip=dhcp spinlock=tickless ro
 EOF
 
 cd $ROOT/boot
