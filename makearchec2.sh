@@ -123,14 +123,11 @@ cd $ROOT/boot
 ln -s boot/grub .
 cd ../..
 
-cp $ROOT/etc/ssh/sshd_config $ROOT/etc/ssh/sshd_config.pacorig
-sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/'  $ROOT/etc/ssh/sshd_config
-sed -i 's/#UseDNS yes/UseDNS no/' $ROOT/etc/ssh/sshd_config
+sed -i.pacorig -e 's/#PasswordAuthentication yes/PasswordAuthentication no/' \
+    -e 's/#UseDNS yes/UseDNS no/' $ROOT/etc/ssh/sshd_config
 
-cp $ROOT/etc/nanorc $ROOT/etc/nanorc.pacorig
-sed -i 's/^# include/include/' $ROOT/etc/nanorc
-echo "set nowrap" >> $ROOT/etc/nanorc
-echo "set softwrap" >> $ROOT/etc/nanorc
+sed -i.pacorig -e 's/^# include/include/' \
+    -e 's/# set \(nowrap\|softwrap\)/set \1/' $ROOT/etc/nanorc
 
 cp $ROOT/etc/skel/.bash* $ROOT/root
 cp $ROOT/etc/skel/.screenrc $ROOT/root
