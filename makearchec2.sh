@@ -153,8 +153,8 @@ chmod 1777 $ROOT/opt/{sources,packages,srcpackages}
 
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> $ROOT/etc/sudoers
 sed -i 's/bash/zsh/' $ROOT/etc/passwd
-curl -o $ROOT/root/.zshrc  "https://github.com/MrElendig/dotfiles-alice/raw/master/.zshrc"
-curl -o $ROOT/root/.vimrc "https://github.com/MrElendig/dotfiles-alice/raw/master/.vimrc"
+#curl -o $ROOT/root/.zshrc  "https://github.com/MrElendig/dotfiles-alice/raw/master/.zshrc"
+#curl -o $ROOT/root/.vimrc "https://github.com/MrElendig/dotfiles-alice/raw/master/.vimrc"
 
 mv $ROOT/etc/resolv.conf $ROOT/etc/resolv.conf.pacorig
 echo "nameserver 172.16.0.23" > $ROOT/etc/resolv.conf
